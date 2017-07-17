@@ -3,27 +3,30 @@
  */
 
 document.onreadystatechange = function() {
-    if (document.readyState === 'complete') {
-        var main_image = $('img[alt="main-image"]');
-        var article = $("article");
-        if (!$(main_image).length) {
-            $(article).addClass("no-main");
-        } else {
-            var background_src = $(main_image).attr('src');
-            var header = $(".post-head");
-            var content = $(".post-content");
-            var first_paragraph = $(content).find("p").first();
+  if (document.readyState === 'complete') {
+    const main_image = document.querySelectorAll('img[alt="main-image"]');
+    const article = document.querySelectorAll("article");
+    if (!main_image.length) {
+      article[0].className = "no-main";
+    } else {
+      const background_src = main_image[0].src;
+      const header = document.querySelectorAll(".post-head");
+      const content = document.querySelectorAll(".post-content");
+      const first_paragraph = document.querySelectorAll(".post-content p")[0];
 
-            var background = new Image();
-            background.src = background_src;
-            background.onload = function() {
-                $(main_image).remove();
-                $(article).addClass("main");
-                $(header).css({'background-image': 'url(' + background_src + ')'});
-                if ($(first_paragraph).length && $(first_paragraph).text() === "" && !$(first_paragraph).children().length) {
-                    $(first_paragraph).remove();
-                }
-            }
+      const background = new Image();
+      background.src = background_src;
+      background.onload = function() {
+        main_image[0].remove();
+        article[0].className += " main";
+        header[0].style.backgroundImage = 'url(' + background_src + ')';
+        if (first_paragraph.innerHTML === "") {
+          first_paragraph.remove();
         }
+        // if ($(first_paragraph).length && $(first_paragraph).text() === "" && !$(first_paragraph).children().length) {
+        //   $(first_paragraph).remove();
+        // }
+      }
     }
+  }
 }

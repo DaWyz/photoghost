@@ -1,4 +1,22 @@
 {
-  "name": "Photo Ghost",
-  "version": "0.1.1"
+  "name": "photoghost",
+  "version": "0.1.2",
+  "author": {
+    "name": "Alban Escalier",
+    "email": "alban.escalier@gmail.com"
+  },
+  "config": {
+    "posts_per_page": 5
+  },
+  "engines": {
+    "ghost": "^1.0.0"
+  },
+  "license": "MIT",
+  "gpm": {
+    "type": "theme",
+    "categories": [
+      "photos",
+      "travel"
+    ]
+  }
 }
